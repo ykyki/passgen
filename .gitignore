@@ -1,0 +1,7 @@
+# Binaries
+passgen
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib

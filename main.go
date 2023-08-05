@@ -16,10 +16,10 @@ func main() {
 		length       uint
 	)
 
-	flag.BoolVar(&printVersion, "version", false, "print this tool version")
-	flag.BoolVar(&printVersion, "v", false, "print this tool version (shorthand)")
-	flag.UintVar(&length, "length", 13, "password length")
-	flag.UintVar(&length, "l", 14, "password length")
+	flag.BoolVar(&printVersion, "version", false, "print passgen version")
+	flag.BoolVar(&printVersion, "v", false, "print passgen version (shorthand)")
+	flag.UintVar(&length, "length", 16, "password length")
+	flag.UintVar(&length, "l", 16, "password length")
 	flag.Parse()
 
 	if printVersion {

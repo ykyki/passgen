@@ -8,7 +8,7 @@ import (
 )
 
 var (
-	toolVersion = "0.1.0"
+	passgenVersion = "0.2.0"
 )
 
 func main() {
@@ -47,7 +47,7 @@ func (c *cli) run(args []string) int {
 	}
 
 	if printVersion {
-		fmt.Fprintf(c.outStream, "passgen version %s\n", toolVersion)
+		fmt.Fprintf(c.outStream, "passgen version %s\n", passgenVersion)
 		return 0
 	}
 

@@ -25,14 +25,19 @@ func (c *cli) run(args []string) int {
 	f.SetOutput(c.errStream)
 
 	var (
-		printVersion bool
-		length       int
+		printVersion                                               bool
+		length                                                     int
+		capitalLetterFlag, smallLetterFlag, numberFlag, symbolFlag bool
 	)
 
 	f.BoolVar(&printVersion, "version", false, "print passgen version")
 	f.BoolVar(&printVersion, "v", false, "print passgen version (shorthand)")
 	f.IntVar(&length, "length", 16, "password length")
 	f.IntVar(&length, "l", 16, "password length")
+	f.BoolVar(&capitalLetterFlag, "A", false, "include capital letters")
+	f.BoolVar(&smallLetterFlag, "a", false, "include small letters")
+	f.BoolVar(&numberFlag, "n", false, "include numbers")
+	f.BoolVar(&symbolFlag, "s", false, "include symbols")
 
 	err := f.Parse(args[1:])
 	if err != nil {
@@ -51,7 +56,10 @@ func (c *cli) run(args []string) int {
 		return 0
 	}
 
-	password, err := generatePassword(length)
+	password, err := generatePassword(
+		length,
+		decideLetterOption(capitalLetterFlag, smallLetterFlag, numberFlag, symbolFlag),
+	)
 	if err != nil {
 		fmt.Fprintf(c.errStream, "failed to generate password\n%s\n", err)
 		return 1
@@ -60,4 +68,26 @@ func (c *cli) run(args []string) int {
 	fmt.Fprintf(c.outStream, "%s\n", password)
 
 	return 0
+}
+
+type letterOption struct {
+	capitalLetter, smallLetter, number, symbol bool
+}
+
+func decideLetterOption(capitalLetterFlag, smallLetterFlag, numberFlag, symbolFlag bool) letterOption {
+	if capitalLetterFlag || smallLetterFlag || numberFlag || symbolFlag {
+		return letterOption{
+			capitalLetter: capitalLetterFlag,
+			smallLetter:   smallLetterFlag,
+			number:        numberFlag,
+			symbol:        symbolFlag,
+		}
+	}
+
+	return letterOption{
+		capitalLetter: true,
+		smallLetter:   true,
+		number:        true,
+		symbol:        true,
+	}
 }

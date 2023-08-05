@@ -24,10 +24,10 @@ func main() {
 
 	if printVersion {
 		fmt.Printf("passgen version %s\n", toolVersion)
-		return
+		os.Exit(0)
 	}
 
-	if length == 0 {
+	if length <= 0 {
 		fmt.Println("error: length must be greater than 0")
 		os.Exit(1)
 	}

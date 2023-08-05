@@ -13,13 +13,13 @@ var (
 func main() {
 	var (
 		printVersion bool
-		length       uint
+		length       int
 	)
 
 	flag.BoolVar(&printVersion, "version", false, "print passgen version")
 	flag.BoolVar(&printVersion, "v", false, "print passgen version (shorthand)")
-	flag.UintVar(&length, "length", 16, "password length")
-	flag.UintVar(&length, "l", 16, "password length")
+	flag.IntVar(&length, "length", 16, "password length")
+	flag.IntVar(&length, "l", 16, "password length")
 	flag.Parse()
 
 	if printVersion {

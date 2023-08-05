@@ -12,12 +12,12 @@ const (
 	numbers        = "0123456789"
 )
 
-func generatePassword(length uint) (string, error) {
+func generatePassword(length int) (string, error) {
 	chars := capitalLetters + smallLetters + numbers + symbols
 
 	var password string
 
-	for i := 0; i < int(length); i++ {
+	for i := 0; i < length; i++ {
 		randomIndex, err := rand.Int(rand.Reader, big.NewInt(int64(len(chars))))
 		if err != nil {
 			return "", err

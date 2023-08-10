@@ -1,5 +1,7 @@
 # passgen
 
+A simple password generator.
+
 ## Usage
 
 ```sh

@@ -6,6 +6,7 @@
     "--config=${workspaceFolder}/.golangci.yml"
   ],
   "cSpell.words": [
-    "passgen"
+    "passgen",
+    "ykyki"
   ]
 }

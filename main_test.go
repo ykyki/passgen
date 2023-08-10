@@ -22,18 +22,23 @@ func TestRun(t *testing.T) {
 			want: 0,
 		},
 		{
-			name: "option --length",
+			name: "option --length (int)",
 			args: []string{"--length", "32"},
 			want: 0,
 		},
 		{
-			name: "option -l",
+			name: "option -l (int)",
 			args: []string{"-l", "8"},
 			want: 0,
 		},
 		{
-			name: "option -l=4",
+			name: "option -l=(int)",
 			args: []string{"-l=4"},
+			want: 0,
+		},
+		{
+			name: "option -l(int)",
+			args: []string{"-l64"},
 			want: 0,
 		},
 		{
@@ -45,6 +50,21 @@ func TestRun(t *testing.T) {
 			name: "option -l with negative value",
 			args: []string{"--length '-2'"},
 			want: 1,
+		},
+		{
+			name: "option -a",
+			args: []string{"-a"},
+			want: 0,
+		},
+		{
+			name: "option --capital",
+			args: []string{"--capital"},
+			want: 0,
+		},
+		{
+			name: "multiple options",
+			args: []string{"-a", "-An", "-s", "-l8"},
+			want: 0,
 		},
 		{
 			name: "option undefined",

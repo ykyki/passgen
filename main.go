@@ -32,11 +32,12 @@ func (c *cli) run(args []string) int {
 	)
 
 	f.BoolVarP(&printVersion, "version", "v", false, "print passgen version")
-	f.IntVarP(&length, "length", "l", 16, "password length")
-	f.BoolVar(&capitalLetterFlag, "A", false, "include capital letters")
-	f.BoolVar(&smallLetterFlag, "a", false, "include small letters")
-	f.BoolVar(&numberFlag, "n", false, "include numbers")
-	f.BoolVar(&symbolFlag, "s", false, "include symbols")
+	f.IntVarP(&length, "length", "l", 32, "password length")
+	f.BoolVarP(&capitalLetterFlag, "capital", "A", false, "include capital letters")
+	f.BoolVarP(&smallLetterFlag, "small", "a", false, "include small letters")
+	f.BoolVarP(&numberFlag, "number", "n", false, "include numbers")
+	f.BoolVarP(&symbolFlag, "symbol", "s", false, "include symbols")
+	f.SortFlags = false
 
 	err := f.Parse(args[1:])
 	if err != nil {

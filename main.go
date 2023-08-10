@@ -1,10 +1,11 @@
 package main
 
 import (
-	"flag"
 	"fmt"
 	"io"
 	"os"
+
+	flag "github.com/spf13/pflag"
 )
 
 var (
@@ -30,10 +31,8 @@ func (c *cli) run(args []string) int {
 		capitalLetterFlag, smallLetterFlag, numberFlag, symbolFlag bool
 	)
 
-	f.BoolVar(&printVersion, "version", false, "print passgen version")
-	f.BoolVar(&printVersion, "v", false, "print passgen version (shorthand)")
-	f.IntVar(&length, "length", 16, "password length")
-	f.IntVar(&length, "l", 16, "password length")
+	f.BoolVarP(&printVersion, "version", "v", false, "print passgen version")
+	f.IntVarP(&length, "length", "l", 16, "password length")
 	f.BoolVar(&capitalLetterFlag, "A", false, "include capital letters")
 	f.BoolVar(&smallLetterFlag, "a", false, "include small letters")
 	f.BoolVar(&numberFlag, "n", false, "include numbers")

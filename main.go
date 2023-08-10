@@ -9,7 +9,7 @@ import (
 )
 
 var (
-	passgenVersion = "0.2.0"
+	passgenVersion = "1.0.0"
 )
 
 func main() {

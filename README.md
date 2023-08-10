@@ -1,5 +1,7 @@
 # passgen
 
+## Usage
+
 ```sh
 $ passgen -h
 Usage of passgen:
@@ -15,4 +17,10 @@ $ passgen
 
 $ passgen -aA -l 16
 aiOYZsoCoeirOBtQ
+```
+
+## Installation
+
+```sh
+go install github.com/ykyki/passgen@latest
 ```

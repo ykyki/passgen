@@ -42,7 +42,6 @@ func (c *cli) run(args []string) int {
 	err := f.Parse(args[1:])
 	if err != nil {
 		// fmt.Fprintf(c.errStream, "failed to parse arguments\n%s\n", err)
-		fmt.Fprintln(c.errStream, "failed to parse arguments")
 		return 1
 	}
 

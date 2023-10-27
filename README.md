@@ -2,6 +2,16 @@
 
 A simple password generator.
 
+## Alternative
+
+shell script
+```zsh
+function passgen {
+    local passlen=${1:-32}
+    LC_ALL=C tr -cd '[:alnum:]!@#$%^&*' < /dev/urandom | fold -w $passlen | head -n1
+}
+```
+
 ## Usage
 
 ```sh
